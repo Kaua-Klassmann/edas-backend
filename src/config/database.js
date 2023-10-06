@@ -1,9 +1,9 @@
 const databaseConfig = {
     dialect: 'postgres',
-    host: 'dpg-ckeqaqea3ovc738lrmn0-a',
+    host: 'postgres://edas:ZfHoXMnWMZTbv6ne8Fa7b4rF4b39ulR8@dpg-ckg2i7uct0pc73a0q9f0-a/edas_ifrs_feliz',
     username: 'edas',
-    password: '9YZSTAXPwbTSL3IzhyN8guaUXUG7zyKw',
-    database: 'edas',
+    password: 'ZfHoXMnWMZTbv6ne8Fa7b4rF4b39ulR8',
+    database: 'edas_ifrs_feliz',
     logging: false,
     timezone: "-03:00",
     define: {
