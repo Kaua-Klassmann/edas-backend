@@ -57,7 +57,6 @@ class ProvaController {
        const provaStore = await Prova.findOne({
             where: {curso: req.ucurso},
             where: {ano: req.uano},
-            where: {turma: req.body.turma},
             where: {disciplina: req.body.disciplina},
             where: {horario: req.body.horario}
         });
