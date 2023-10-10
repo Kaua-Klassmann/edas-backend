@@ -25,8 +25,9 @@ class SessionController {
         }
 
         const { email, senha } = req.body;
+        const emailDividido = email.split("@");
 
-        if(email.split("@")[1] != "aluno.feliz.ifrs.edu.br"){
+        if(emailDividido[1] != "aluno.feliz.ifrs.edu.br" && emailDividido.length() == 2){
             return res.status(422).json({error: "Email inválido."});
         };
 
