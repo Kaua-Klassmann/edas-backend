@@ -19,6 +19,10 @@ class UsuarioController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
+        if(req.body.email.indexOf("@aluno.feliz.ifrs.edu.br") == -1){
+            return res.status(422).json({error: "Email inválido."});
+        };
+
         const usuario = await Usuario.findOne({
             where: {email: req.body.email}
         });
