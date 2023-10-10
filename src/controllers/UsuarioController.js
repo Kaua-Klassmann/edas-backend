@@ -19,7 +19,9 @@ class UsuarioController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        if(req.body.email.indexOf("@aluno.feliz.ifrs.edu.br") == -1){
+        const { email } = req.body;
+
+        if(email.split("@")[1] == "aluno.feliz.ifrs.edu.br"){
             return res.status(422).json({error: "Email inválido."});
         };
 
@@ -31,7 +33,7 @@ class UsuarioController {
             return res.status(400).json({error: "O email já está cadastrado."});
         };
 
-        const {id, nome, email } = await Usuario.create(req.body);
+        const {id, nome } = await Usuario.create(req.body);
         return res.json({
             id, 
             nome, 
