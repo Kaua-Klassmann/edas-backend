@@ -1,9 +1,9 @@
 const databaseConfig = {
-    dialect: 'postgres',
-    host: 'dpg-ckg2i7uct0pc73a0q9f0-a',
-    username: 'edas',
-    password: 'ZfHoXMnWMZTbv6ne8Fa7b4rF4b39ulR8',
-    database: 'edas_ifrs_feliz',
+    dialect: process.env.DB_DIALECT,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     logging: false,
     timezone: "-03:00",
     define: {
