@@ -54,7 +54,7 @@ class ProvaController {
             return res.status(422).json({error: "Formato inválido."});
         };
 
-       const provaStore = await Prova.findOne({
+      /* const provaStore = await Prova.findOne({
             where: {curso: req.ucurso},
             where: {ano: req.uano},
             where: {disciplina: req.body.disciplina},
@@ -63,7 +63,7 @@ class ProvaController {
 
         if(provaStore) {
             return res.status(400).json({error: "A prova já está cadastrada."});
-        }
+        }*/
 
         const body = {
             curso: req.ucurso,
