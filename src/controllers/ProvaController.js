@@ -51,7 +51,7 @@ class ProvaController {
         });
 
         if(! (await schema.isValid(req.body))) {
-            return res.status(400).json({error: "Formato inválido."});
+            return res.status(422).json({error: "Formato inválido."});
         };
 
        const provaStore = await Prova.findOne({
