@@ -4,7 +4,7 @@ const databaseConfig = {
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    logging: process.env.DB_LOGGING,
+    logging: false,
     timezone: process.env.DB_TIMEZONE,
     define: {
         timestamps: process.env.DB_TIMESTAMPS,
