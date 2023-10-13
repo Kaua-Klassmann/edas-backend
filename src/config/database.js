@@ -5,11 +5,11 @@ const databaseConfig = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     logging: false,
-    timezone: process.env.DB_TIMEZONE,
+    timezone: "-03:00",
     define: {
-        timestamps: process.env.DB_TIMESTAMPS,
-        underscored: process.env.DB_UNDERSCORED,
-        freezeTableName: process.env.DB_FREEZETABLENAME,
+        timestamps: true,
+        underscored: false,
+        freezeTableName: true,
     },
 };
 
