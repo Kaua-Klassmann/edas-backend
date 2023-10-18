@@ -1,5 +1,6 @@
 import Usuario from "../models/Usuario.js";
 import * as Yup from 'yup';
+import { transporter } from "../config/mail.js";
 
 
 class UsuarioController {
@@ -34,6 +35,33 @@ class UsuarioController {
         };
 
         const {id, nome } = await Usuario.create(req.body);
+
+        //enviar email
+
+        try {
+            const html = `<html><h1>teste</h1></html>`;
+            
+            const options = {
+              from: "edas.contact@gmail.com",
+              to: "kaua.klassmann661@gmail.com",
+              subject: `EDAS [${email}]`,
+              text: `Acesse a seguinte URL para confirmar a criação da sua conta: `,
+              html,
+            };
+    
+            
+            const info = await transporter.sendMail(options);
+            if (!info.messageId) {
+              return res.status(400).json({
+                error: "Ocorreu um erro no envio do email de confirmação.",
+              });
+            }
+          } catch (error) {
+            return res.status(400).json({ error: error.stack });
+          }
+
+        //responder para o backend o que foi feito  
+
         return res.json({
             id, 
             nome, 
