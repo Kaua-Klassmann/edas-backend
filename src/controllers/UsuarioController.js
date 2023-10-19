@@ -63,10 +63,10 @@ class UsuarioController {
 
             console.log(code);
 
-            const ativacao = json(
-                email,
-                code
-            );
+            const ativacao = {
+                "usuario": email,
+                "codigo": code
+            };
 
             console.log(req.body);
             console.log(ativacao);
