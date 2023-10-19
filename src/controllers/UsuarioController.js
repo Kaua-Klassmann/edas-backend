@@ -28,11 +28,11 @@ class UsuarioController {
             return res.status(422).json({error: "Email inválido."});
         };
 
-        const usuarioExiste = await Usuario.findOne({
+        const usuario = await Usuario.findOne({
             where: {email: req.body.email}
         });
 
-        if(usuarioExiste) {
+        if(usuario) {
             return res.status(400).json({error: "O email já está cadastrado."});
         };
 
@@ -58,11 +58,10 @@ class UsuarioController {
               });
             }
 
-            const usuario = email;
             const codigo = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
 
             await Ativacao.create({
-                "usuario": usuario,
+                "usuario": email,
                 "codigo": codigo
             });
           } catch (error) {
