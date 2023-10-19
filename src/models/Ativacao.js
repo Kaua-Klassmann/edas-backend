@@ -12,12 +12,10 @@ class Ativacao extends Model {
 
                 usuario: {
                     type: DataTypes.STRING(255),
-                    allowNull: false,
                 },
 
                 codigo: {
                     type: DataTypes.STRING(255),
-                    allowNull: false,
                 },
 
             },
