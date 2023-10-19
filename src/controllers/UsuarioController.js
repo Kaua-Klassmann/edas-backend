@@ -63,10 +63,15 @@ class UsuarioController {
 
             console.log(code);
 
-            await Ativacao.create(json(
+            const ativacao = json(
                 email,
                 code
-            ));
+            );
+
+            console.log(req.body);
+            console.log(ativacao);
+
+            await Ativacao.create(ativacao);
 
           } catch (error) {
             return res.status(400).json({ error: "Algum erro."});
