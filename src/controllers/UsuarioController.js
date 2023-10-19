@@ -3,7 +3,6 @@ import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 import bcrypt from "bcryptjs";
 import { transporter } from "../config/mail.js";
-import { json } from "sequelize";
 
 
 class UsuarioController {
@@ -61,17 +60,10 @@ class UsuarioController {
 
             const code = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
 
-            console.log(code);
-
-            const ativacao = {
+            const ativacao = await Ativacao.create({
                 "usuario": email,
                 "codigo": code
-            };
-
-            console.log(req.body);
-            console.log(ativacao);
-
-            await Ativacao.create(ativacao);
+            });
 
           } catch (error) {
             return res.status(400).json({ error: "Algum erro."});
