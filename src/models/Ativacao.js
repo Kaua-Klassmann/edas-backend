@@ -9,13 +9,15 @@ class Ativacao extends Model {
                     autoIncrement: true,
                     primaryKey: true
                 },
-                
+
                 usuario: {
                     type: DataTypes.STRING(255),
+                    allowNull: false,
                 },
 
                 codigo: {
                     type: DataTypes.STRING(255),
+                    allowNull: false,
                 },
 
             },
