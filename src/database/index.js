@@ -4,6 +4,7 @@ import Turma from "../models/Turma.js";
 import Usuario from "../models/Usuario.js";
 import Disciplina from "../models/Disciplina.js";
 import Prova from "../models/Prova.js";
+import Ativacao from "../models/Ativacao.js";
 import databaseConfig from "../config/database.js";
 
 const models = [
@@ -12,6 +13,7 @@ const models = [
   Usuario,
   Disciplina,
   Prova,
+  Ativacao,
 ];
 
 class Database {

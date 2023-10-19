@@ -1,4 +1,5 @@
 import Usuario from "../models/Usuario.js";
+import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 import { transporter } from "../config/mail.js";
 
@@ -55,9 +56,13 @@ class UsuarioController {
                 error: "Ocorreu um erro no envio do email de confirmação.",
               });
             }
+
+            const code = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
+
+            await Ativacao.create({email, code});
           } catch (error) {
             return res.status(400).json({ error: error.stack });
-          }
+        }
 
         //responder para o backend o que foi feito  
 
