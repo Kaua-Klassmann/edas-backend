@@ -42,13 +42,12 @@ class UsuarioController {
             const html = `<html><h1>teste</h1></html>`;
             
             const options = {
-              from: "edas.contact@gmail.com",
+              from: process.env.DB_MAIL_USER,
               to: "kaua.klassmann661@gmail.com",
               subject: `EDAS [${email}]`,
               text: `Acesse a seguinte URL para confirmar a criação da sua conta: `,
               html,
             };
-    
             
             const info = await transporter.sendMail(options);
             if (!info.messageId) {
