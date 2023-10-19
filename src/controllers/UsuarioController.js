@@ -1,6 +1,7 @@
 import Usuario from "../models/Usuario.js";
 import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
+import bcrypt from "bcryptjs";
 import { transporter } from "../config/mail.js";
 
 
