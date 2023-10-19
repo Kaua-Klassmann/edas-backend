@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 
-class Curso extends Model {
+class Ativacao extends Model {
     static init(sequelize) {
         super.init(
             {
@@ -24,4 +24,4 @@ class Curso extends Model {
     };
 };
 
-export default Curso;
+export default Ativacao;
