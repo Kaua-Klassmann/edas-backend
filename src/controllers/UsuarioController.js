@@ -60,10 +60,11 @@ class UsuarioController {
 
             const codigo = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
 
+            /*
             await Ativacao.create({
                 "usuario": email,
                 "codigo": codigo
-            });
+            });*/
           } catch (error) {
             return res.status(400).json({ error: "Algum erro."});
         }
