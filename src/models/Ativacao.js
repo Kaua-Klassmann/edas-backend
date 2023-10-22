@@ -4,12 +4,12 @@ class Ativacao extends Model {
     static init(sequelize) {
         super.init(
             {
-                usuario: {
-                    type: DataTypes.STRING(255),
+                email: {
+                    type: DataTypes.STRING,
                 },
 
                 codigo: {
-                    type: DataTypes.STRING(255),
+                    type: DataTypes.STRING,
                 },
 
             },
