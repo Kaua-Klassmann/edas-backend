@@ -9,12 +9,15 @@ class Ativacao extends Model {
                     autoIncrement: true,
                     primaryKey: true
                 },
+                
                 email: {
                     type: DataTypes.STRING,
+                    allowNull: false,
                 },
 
                 codigo: {
                     type: DataTypes.STRING,
+                    allowNull: false,
                 },
 
             },
