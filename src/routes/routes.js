@@ -6,6 +6,7 @@ import UsuarioController from "../controllers/UsuarioController.js";
 import DisciplinaController from "../controllers/DisciplinaController.js";
 import ProvaController from "../controllers/ProvaController.js";
 import SessionController from "../controllers/SessionController.js";
+import AtivacaoController from "../controllers/AtivacaoController.js";
 import authMiddleware from "../middlewares/auth.js";
 
 const routes = new Router();
@@ -15,6 +16,7 @@ routes.get('/cursos', CursoController.index);
 routes.get('/turma', TurmaController.show);
 routes.get('/turmas', TurmaController.index);
 routes.post('/usuario', UsuarioController.store);
+routes.post('/code', AtivacaoController.store);
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);
