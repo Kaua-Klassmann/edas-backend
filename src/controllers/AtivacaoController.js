@@ -33,13 +33,11 @@ class AtivacaoController {
         let usuarioNovo = usuario;
         usuarioNovo.ativacao = true;
 
-        await Usuario.update({usuario}, usuarioNovo);
+        await Usuario.update({email: email}, usuarioNovo);
 
         const client = databaseConfig;
 
         await client.connect();
-
-        await client.query(sqlUsuario, valuesUsuario);
 
         const sqlAtivacao = 'DELETE from "Ativacao" WHERE "email"=$1';
         const valuesAtivacao = [email];
