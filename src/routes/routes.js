@@ -16,7 +16,7 @@ routes.get('/cursos', CursoController.index);
 routes.get('/turma', TurmaController.show);
 routes.get('/turmas', TurmaController.index);
 routes.post('/usuario', UsuarioController.store);
-routes.post('/code', AtivacaoController.store);
+routes.get('/:codigo', AtivacaoController.store);
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);

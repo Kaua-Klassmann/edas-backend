@@ -10,11 +10,11 @@ class AtivacaoController {
             codigo: Yup.string().required()
         });
 
-        if(! (await schema.isValid(req.query))) {
+        if(! (await schema.isValid(req.params))) {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        const { codigo } = req.query;
+        const { codigo } = req.params;
         const ativacao = await Ativacao.findOne({
             where: {codigo}
         });
@@ -34,6 +34,10 @@ class AtivacaoController {
         const valuesAtivacao = [email];
 
         await client.query(sqlAtivacao, valuesAtivacao);
+
+        res.json({
+            resp: "Funcionou"
+        })
     };
 };
 
