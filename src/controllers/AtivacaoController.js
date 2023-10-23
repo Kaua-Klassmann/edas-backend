@@ -1,6 +1,7 @@
 import databaseConfig from "../config/database.js";
 import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
+import Usuario from "../models/Usuario.js";
 
 
 class AtivacaoController {
@@ -26,8 +27,13 @@ class AtivacaoController {
 
         const { email } = ativacao;
 
-        const sqlUsuario = 'UPDATE "Usuario" SET "ativado"=$1 WHERE "email"=$2';
-        const valuesUsuario = [true, email];
+        const usuario = await Usuario.findOne({
+            where: {email}
+        });
+        let usuarioNovo = usuario;
+        usuario.ativacao = true;
+
+        await Usuario.update({usuario}, usuarioNovo);
 
         const client = databaseConfig;
 
