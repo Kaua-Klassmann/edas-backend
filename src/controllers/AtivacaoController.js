@@ -1,3 +1,4 @@
+import databaseConfig from "../config/database.js";
 import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 
@@ -25,12 +26,16 @@ class AtivacaoController {
 
         const { email } = ativacao;
 
-        const sqlUsuario = 'UPDATE "Usuario" SET "ativado"=? WHERE "email"=?';
+        const sqlUsuario = 'UPDATE "Usuario" SET "ativado"=$1 WHERE "email"=$2';
         const valuesUsuario = [true, email];
+
+        const client = databaseConfig;
+
+        await client.connect();
 
         await client.query(sqlUsuario, valuesUsuario);
 
-        const sqlAtivacao = 'DELETE from "Ativacao" WHERE "email"=?';
+        const sqlAtivacao = 'DELETE from "Ativacao" WHERE "email"=$1';
         const valuesAtivacao = [email];
 
         await client.query(sqlAtivacao, valuesAtivacao);
@@ -38,6 +43,8 @@ class AtivacaoController {
         res.json({
             resp: "Funcionou"
         })
+
+        con.con
     };
 };
 
