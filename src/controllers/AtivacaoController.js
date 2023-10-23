@@ -31,7 +31,7 @@ class AtivacaoController {
             where: {email}
         });
         let usuarioNovo = usuario;
-        usuario.ativacao = true;
+        usuarioNovo.ativacao = true;
 
         await Usuario.update({usuario}, usuarioNovo);
 
