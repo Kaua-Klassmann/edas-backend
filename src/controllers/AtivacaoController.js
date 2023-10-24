@@ -3,6 +3,8 @@ import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 import Usuario from "../models/Usuario.js";
 
+const Pool = require('pg').Pool
+const pool = new Pool(databaseConfig)
 
 class AtivacaoController {
 
@@ -30,25 +32,10 @@ class AtivacaoController {
         const usuario = await Usuario.findOne({
             where: {email}
         });
-        let usuarioNovo = usuario;
-        usuarioNovo.ativacao = true;
 
-        await Usuario.update({email: email}, usuarioNovo);
-
-        const client = databaseConfig;
-
-        await client.connect();
-
-        const sqlAtivacao = 'DELETE from "Ativacao" WHERE "email"=$1';
-        const valuesAtivacao = [email];
-
-        await client.query(sqlAtivacao, valuesAtivacao);
-
-        res.json({
-            resp: "Funcionou"
-        })
-
-        con.con
+        pool.query('UPDATE "Usuario" SET "ativado"=$1 WHERE "email"=$2',
+            [true, email], (error, results) => {});
+        pool.query('DELETE FROM "Ativacao" WHERE "email"=$1', [email], (error, results) => {});
     };
 };
 
