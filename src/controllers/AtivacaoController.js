@@ -3,7 +3,7 @@ import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 import Usuario from "../models/Usuario.js";
 
-const Pool = require('pg').Pool
+const Pool = require('postgres').Pool
 const pool = new Pool(databaseConfig)
 
 class AtivacaoController {
