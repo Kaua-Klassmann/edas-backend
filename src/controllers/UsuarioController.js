@@ -85,6 +85,7 @@ class UsuarioController {
                 id: e.id,
                 nome: e.nome,
                 ativado: e.ativado,
+                curso: e.curso,
             }
         });
         return res.json(usuariosReturn);
