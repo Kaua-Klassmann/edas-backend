@@ -41,7 +41,9 @@ class UsuarioController {
         //enviar email
 
         try {
-            const html = `<html><h1>teste</h1></html>`;
+            const codigo = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
+
+            const html = `<html><h1>${codigo}</h1></html>`;
             
             const options = {
               from: process.env.DB_MAIL_USER,
@@ -58,7 +60,6 @@ class UsuarioController {
               });
             }
 
-            const codigo = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
 
             await Ativacao.create({
                 "email": email,
@@ -82,7 +83,8 @@ class UsuarioController {
         const usuariosReturn = usuarios.map(e => {
             return {
                 id: e.id,
-                nome: e.nome
+                nome: e.nome,
+                ativado: e.ativado,
             }
         });
         return res.json(usuariosReturn);

@@ -1,15 +1,10 @@
-import databaseConfig from "../config/database.js";
 import Ativacao from "../models/Ativacao.js";
 import * as Yup from 'yup';
 import Usuario from "../models/Usuario.js";
-import pg from "pg";
-
-const Pool = pg.Pool
-const pool = new Pool(databaseConfig)
 
 class AtivacaoController {
 
-    async store(req,res) {
+    async update(req,res) {
 
         const schema = Yup.object().shape({
             codigo: Yup.string().required()
@@ -34,9 +29,9 @@ class AtivacaoController {
             where: {email}
         });
 
-        pool.query('UPDATE "Usuario" SET "ativado"=$1 WHERE "email"=$2',
-            [true, email], (error, results) => {});
-        pool.query('DELETE FROM "Ativacao" WHERE "email"=$1', [email], (error, results) => {});
+        await usuario.update({ativado: true});
+        return res.send();
+        
     };
 };
 
