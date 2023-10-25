@@ -30,8 +30,10 @@ class AtivacaoController {
         });
 
         await usuario.update({ativado: true});
+
+        await ativacao.destroy();
+
         return res.send();
-        
     };
 };
 

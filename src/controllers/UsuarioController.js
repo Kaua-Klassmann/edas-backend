@@ -69,7 +69,7 @@ class UsuarioController {
             return res.status(400).json({ error: "Algum erro."});
         }
 
-        //responder para o backend o que foi feito  
+        //responder para o frontend o que foi feito  
 
         return res.json({
             id, 
