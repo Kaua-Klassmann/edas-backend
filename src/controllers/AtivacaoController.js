@@ -29,7 +29,7 @@ class AtivacaoController {
             where: {email}
         });
 
-        await usuario.update({ativado: true});
+        usuario.ativado = true;
 
         await ativacao.destroy();
 
