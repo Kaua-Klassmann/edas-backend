@@ -34,7 +34,10 @@ class Usuario extends Model {
                     type: DataTypes.INTEGER,
                     allowNull: false,
                 },
-                               
+                            
+                ativado: {
+                    type: DataTypes.BOOLEAN,
+                }
             },
             {
                 sequelize,
