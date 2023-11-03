@@ -20,7 +20,17 @@ class AtivacaoController {
         });
 
         if(!ativacao) {
-            return res.status(400).json({error: "Código de ativação inválido!"});
+            return res.status(400).send(`<html>
+            <head>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+                rel="stylesheet" crossorigin="anonymous">
+            </head>
+            <body style="heigth: 100vh; background: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%); display: grid; place-items: center;">
+                <main class="rounded-3 p-3 bg-light" style="text-align: center; max-width: 60vw; font-size: 30px;">
+                    <p>Código não encontrado!'</p>
+                </main>
+            </body>
+            </html>`);
         };
 
         const { email } = ativacao;
