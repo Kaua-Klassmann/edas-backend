@@ -27,7 +27,7 @@ class AtivacaoController {
             </head>
             <body style="heigth: 100vh; background: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%); display: grid; place-items: center;">
                 <main class="rounded-3 p-3 bg-light" style="text-align: center; max-width: 60vw; font-size: 30px;">
-                    <p>Código não encontrado!'</p>
+                    <p>Código de ativação não encontrado!</p>
                 </main>
             </body>
             </html>`);
