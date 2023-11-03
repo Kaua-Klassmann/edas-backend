@@ -36,7 +36,7 @@ class UsuarioController {
             return res.status(400).json({error: "O email já está cadastrado."});
         };
 
-        const {id, nome } = await Usuario.create(req.body);
+        const { id, nome } = await Usuario.create(req.body);
 
         //enviar email
 
@@ -49,7 +49,7 @@ class UsuarioController {
             
             const options = {
               from: process.env.DB_MAIL_USER,
-              to: "kaua.klassmann661@gmail.com",
+              to: email,
               subject: `EDAS [${email}]`,
               text: `Clique aqui para ativar sua conta:
               https://edas-backend.onrender.com/codigo/${codigo}`,
@@ -83,13 +83,7 @@ class UsuarioController {
     async index(req,res) {
         const usuarios = await Usuario.findAll();
         const usuariosReturn = usuarios.map(e => {
-            return {/*
-                id: e.id,
-                nome: e.nome,
-                ativado: e.ativado,
-                curso: e.curso,*/
-                e
-            }
+            return {e}
         });
         return res.json(usuariosReturn);
     };
