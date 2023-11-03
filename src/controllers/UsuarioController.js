@@ -43,13 +43,16 @@ class UsuarioController {
         try {
             const codigo = (await bcrypt.hash(email, 8)).replace(/[^a-zA-Z0-9]/g, "");
 
-            const html = `<html><h1>${codigo}</h1></html>`;
+            const html = `<html>
+                <h4>Clique <a href="https://edas-backend.onrender.com/codigo/${codigo}">aqui</a> para ativar sua conta!</h4>
+            </html>`;
             
             const options = {
               from: process.env.DB_MAIL_USER,
               to: "kaua.klassmann661@gmail.com",
               subject: `EDAS [${email}]`,
-              text: `Acesse a seguinte URL para confirmar a criação da sua conta: `,
+              text: `Clique aqui para ativar sua conta:
+              https://edas-backend.onrender.com/codigo/${codigo}`,
               html,
             };
             
@@ -59,7 +62,6 @@ class UsuarioController {
                 error: "Ocorreu um erro no envio do email de confirmação.",
               });
             }
-
 
             await Ativacao.create({
                 "email": email,
