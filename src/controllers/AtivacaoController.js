@@ -36,10 +36,9 @@ class AtivacaoController {
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet" crossorigin="anonymous">
         </head>
-        <body style="heigth: 100vh; background: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%);
-        display: grid; place-items: center;">
-            <main class="rounded-3 p-3 bg-light" style="text-align: center; max-width: 60vw">
-                <h3>Conta com o email '${email}' ativada com sucesso!'</h3>
+        <body style="heigth: 100vh; background: linear-gradient(45deg, #21d4fd 0%, #b721ff 100%); display: grid; place-items: center;">
+            <main class="rounded-3 p-3 bg-light" style="text-align: center; max-width: 60vw; font-size: 30px;">
+                <p>Conta com o email '${email}' ativada com sucesso!'</p>
             </main>
         </body>
         </html>`);
