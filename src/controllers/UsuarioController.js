@@ -49,7 +49,7 @@ class UsuarioController {
             
             const options = {
               from: process.env.DB_MAIL_USER,
-              to: email,
+              to: "kaua.klassmann661@gmail.com",
               subject: `EDAS [${email}]`,
               text: `Clique aqui para ativar sua conta:
               https://edas-backend.onrender.com/codigo/${codigo}`,
