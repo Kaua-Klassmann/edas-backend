@@ -4,21 +4,12 @@ import Usuario from '../models/Usuario.js';
 import authConfig from '../config/auth.js';
 
 class SessionController {
-
-    /**
-     * Verifica o usuário e senha.
-     * Gera o token caso a autenticação ocorra com sucesso.
-     * 
-     * @param {*} req 
-     * @param {*} res 
-     * @returns Objeto com dados do usuário e o token.
-     */
     async store(req,res) {
 
         const schema = Yup.object().shape({
             email: Yup.string().email().required(),
             senha: Yup.string().required(),
-        });        
+        });
 
         if(! (await schema.isValid(req.body))) {
             return res.status(400).json({error: "Schema inválido."});
@@ -36,9 +27,14 @@ class SessionController {
             return res.status(400).json({error: "Usuário não encontrado."});
         }
 
+        // Conta ativada?
+        if(!usuario.ativado){
+            return res.status(401).json({error: "Conta não ativada."});
+        }
+
         // Senha incorreta?
         if(! (await usuario.checkPassword(senha))) {
-            return res.status(401).json({error: "Senha errada."});
+            return res.status(402).json({error: "Senha errada."});
         }
 
         const { id, nome, curso, turma, ano } = usuario;
@@ -52,7 +48,7 @@ class SessionController {
                 turma,
                 ano,
             },
-            token: jwt.sign({ id, curso, ano }, authConfig.secret, {
+            token: jwt.sign({ id, curso, ano, ativado }, authConfig.secret, {
                 expiresIn: authConfig.expiresIn,
             }), 
         });
