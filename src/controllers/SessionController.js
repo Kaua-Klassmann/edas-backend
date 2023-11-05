@@ -37,7 +37,7 @@ class SessionController {
             return res.status(402).json({error: "Senha errada."});
         }
 
-        const { id, nome, curso, turma, ano } = usuario;
+        const { id, nome, curso, turma, ano, ativado } = usuario;
 
         return res.json({
             user: {
