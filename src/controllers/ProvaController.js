@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import Prova from "../models/Prova.js";
 import * as Yup from 'yup';
 
@@ -35,7 +36,19 @@ class ProvaController {
     };
 
     async index(req,res) {
-        const provas = await Prova.findAll();
+        /*
+        let dia = (new Date()).toISOString().split('T')[0];
+        const provas = await Prova.findAll(
+            {
+                where: {
+                    dia: {
+                        [Op.gte]: dia
+                    }
+                }
+            }
+        );
+        */
+       const provas = await Prova.findAll();
         return res.json(provas);
     };
 
@@ -54,16 +67,17 @@ class ProvaController {
             return res.status(422).json({error: "Formato inválido."});
         };
 
-      /* const provaStore = await Prova.findOne({
-            where: {curso: req.ucurso},
-            where: {ano: req.uano},
-            where: {disciplina: req.body.disciplina},
-            where: {horario: req.body.horario}
+        const provaStore = await Prova.findOne({
+            where: {
+                disciplina: req.body.disciplina,
+                horario: req.body.horario,
+                dia: req.body.dia
+            }
         });
 
         if(provaStore) {
             return res.status(400).json({error: "A prova já está cadastrada."});
-        }*/
+        }
 
         const body = {
             curso: req.ucurso,
