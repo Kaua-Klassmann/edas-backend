@@ -62,9 +62,9 @@ class ProvaController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        const { id } = req.query.id;
-
-        const prova = await Prova.findByPk(id);
+        const prova = await Prova.findOne({
+            where: {id: req.query.id}
+        });
 
         if(!prova) {
             return res.status(400).json({error: "A prova não foi encontrada."});
