@@ -52,6 +52,27 @@ class ProvaController {
         return res.json(provas);
     };
 
+    async delete(req,res){
+
+        const schema = Yup.object().shape({
+            id: Yup.string().required()
+        });
+
+        if(! (await schema.isValid(req.params))) {
+            return res.status(400).json({error: "Formato inválido."});
+        };
+
+        const prova = await Prova.findOne({
+            where: {id: req.query.id}
+        });
+
+        if(!prova) {
+            return res.status(400).json({error: "A prova não foi encontrada."});
+        }
+
+        await prova.delete();
+    }
+
     async store(req,res) {
 
         console.log(">>>>", req.body);
