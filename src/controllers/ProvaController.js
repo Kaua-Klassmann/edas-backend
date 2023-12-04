@@ -70,7 +70,7 @@ class ProvaController {
             return res.status(400).json({error: "A prova não foi encontrada."});
         }
 
-        await prova.delete();
+        await prova.remove();
     }
 
     async store(req,res) {
