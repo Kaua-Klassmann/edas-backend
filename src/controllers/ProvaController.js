@@ -71,6 +71,8 @@ class ProvaController {
         }
 
         await prova.remove();
+
+        return res.send("Concluido")
     }
 
     async store(req,res) {
