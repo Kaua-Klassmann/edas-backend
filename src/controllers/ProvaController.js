@@ -55,7 +55,7 @@ class ProvaController {
     async delete(req,res){
 
         const schema = Yup.object().shape({
-            id: Yup.string().required()
+            id: Yup.number().min(1)
         });
 
         if(! (await schema.isValid(req.params))) {
