@@ -62,17 +62,17 @@ class ProvaController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        const prova = await Prova.findOne({
-            where: {id: req.query.id}
-        });
+        const { id } = req.query.id;
+
+        const prova = await Prova.findByPk(id);
 
         if(!prova) {
             return res.status(400).json({error: "A prova não foi encontrada."});
         }
 
-        await prova.remove();
+        await prova.destroy();
 
-        return res.send("Concluido")
+        return res.send();
     }
 
     async store(req,res) {
