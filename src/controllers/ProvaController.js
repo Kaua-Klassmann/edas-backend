@@ -5,60 +5,13 @@ import * as Yup from 'yup';
 
 class ProvaController {
 
-    async show(req,res) {
-
-        const schema = Yup.object().shape({
-            id: Yup.number().min(1) 
-        });
-
-        if(! (await schema.isValid(req.query))) {
-            return res.status(400).json({error: "Formato inválido."});
-        };
-
-        const { id } = req.query;
-        const prova = await Prova.findByPk(id);
-
-        if(!prova) {
-            return res.status(400).json({error: "Prova não encontrada"});
-        };
-
-        const { curso, ano, turma, disciplina, dia, horario, usuario } = prova;
-        return res.json({
-            id, 
-            curso,
-            ano,
-            turma,
-            disciplina,
-            dia,
-            horario,
-            usuario
-        });
-    };
-
-    async index(req,res) {
-        /*
-        let dia = (new Date()).toISOString().split('T')[0];
-        const provas = await Prova.findAll(
-            {
-                where: {
-                    dia: {
-                        [Op.gte]: dia
-                    }
-                }
-            }
-        );
-        */
-       const provas = await Prova.findAll();
-        return res.json(provas);
-    };
-
     async delete(req,res){
 
         const schema = Yup.object().shape({
             id: Yup.number().min(1)
         });
 
-        if(! (await schema.isValid(req.params))) {
+        if(! (await schema.isValid(req.query))) {
             return res.status(400).json({error: "Formato inválido."});
         };
 

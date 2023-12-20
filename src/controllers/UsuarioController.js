@@ -80,16 +80,6 @@ class UsuarioController {
         });
     };
 
-    async index(req,res) {
-        const usuarios = await Usuario.findAll();
-        const usuariosReturn = usuarios.map(e => {
-            return {e}
-        });
-        return res.json(usuariosReturn);
-    };
-
-
-
     async show(req,res) {
 
         const schema = Yup.object().shape({
