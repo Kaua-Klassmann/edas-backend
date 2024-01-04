@@ -38,7 +38,7 @@ class UsuarioController {
 
         const body = {
             curso: req.body.curso,
-            ano: req.bosy.curso,
+            ano: req.body.curso,
             turma: req.body.turma,
             email: req.body.email,
             nome: req.body.nome,
