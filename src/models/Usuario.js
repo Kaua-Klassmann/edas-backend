@@ -12,22 +12,22 @@ class Usuario extends Model {
                 },
 
                 nome: {
-                    type: DataTypes.STRING(255),
+                    type: DataTypes.STRING(),
                     allowNull: false,
                 },
 
                 email: {
-                    type: DataTypes.STRING(255),
+                    type: DataTypes.STRING(),
                     allowNull: false,
                     unique: true,
                 },
 
                 senha: {
-                    type: DataTypes.VIRTUAL(255),
+                    type: DataTypes.VIRTUAL(),
                 }, 
 
                 senha_hash: {
-                    type: DataTypes.STRING(255),
+                    type: DataTypes.STRING(),
                 }, 
 
                 ano: {

@@ -36,7 +36,16 @@ class UsuarioController {
             return res.status(400).json({error: "O email já está cadastrado."});
         };
 
-        const { id, nome } = await Usuario.create(req.body);
+        const body = {
+            curso: req.body.curso,
+            ano: req.bosy.curso,
+            turma: req.body.turma,
+            email: req.body.email,
+            nome: req.body.nome,
+            senha: req.body.senha
+        }
+
+        const { id, nome } = await Usuario.create(body);
 
         //enviar email
 
