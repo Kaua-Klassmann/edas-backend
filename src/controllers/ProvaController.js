@@ -102,7 +102,7 @@ class ProvaController {
             return res.json(prova);
         });
 
-        return res.json(provas);
+        return res.json(provas[0]);
     };
 };
 
