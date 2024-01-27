@@ -120,8 +120,8 @@ class ProvaController {
                     nome
                 }
             }
-            turma()
-            usuario()
+            await turma()
+            await usuario()
         }
 
         return res.json(provas);
