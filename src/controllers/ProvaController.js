@@ -81,7 +81,7 @@ class ProvaController {
 
     async provasUsuario(req,res) {
 
-        const provas = await Prova.findAll({
+        let provas = await Prova.findAll({
             where: {
                 curso: req.ucurso,
                 ano: req.uano
