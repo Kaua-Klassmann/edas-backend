@@ -2,6 +2,7 @@ import { Op } from "sequelize";
 import Prova from "../models/Prova.js";
 import * as Yup from 'yup';
 import Turma from "../models/Turma.js";
+import Usuario from "../models/Usuario.js";
 
 
 class ProvaController {
@@ -93,13 +94,23 @@ class ProvaController {
         };
 
         for(let i = 0; i < provas.length; i++){
-            let idTurma = provas[i].turma
+            // TURMA
+            const idTurma = provas[i].turma
             const turma = await Turma.findOne({
                 where: {
                     id: idTurma
                 }
             })
             provas[i].turma = turma
+
+            // USUARIO
+            const idUsuario = provas[i].usuario
+            const usuario = await Usuario.findOne({
+                where: {
+                    id: idUsuario
+                }
+            })
+            provas[i].usuario = usuario
         }
 
         return res.json(provas);
