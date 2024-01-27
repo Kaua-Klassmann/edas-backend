@@ -94,31 +94,34 @@ class ProvaController {
         };
 
         for(let i = 0; i < provas.length; i++){
-            // TURMA
-            const idTurma = provas[i].turma
-            const turma = await Turma.findOne({
-                where: {
-                    id: idTurma
+            async function turma() {
+                const id = provas[i].turma
+                const turma = await Turma.findOne({
+                    where: {
+                        id: id
+                    }
+                })
+                const { nome } = turma
+                provas[i].turma = {
+                    id,
+                    nome
                 }
-            })
-            const { nomeTurma } = turma
-            provas[i].turma = {
-                idTurma,
-                nomeTurma
             }
-
-            // USUARIO
-            const idUsuario = provas[i].usuario
-            const usuario = await Usuario.findOne({
-                where: {
-                    id: idUsuario
+            async function usuario() {
+                const id = provas[i].usuario
+                const usuario = await Usuario.findOne({
+                    where: {
+                        id: id
+                    }
+                })
+                const { nome } = usuario
+                provas[i].usuario = {
+                    id,
+                    nome
                 }
-            })
-            const { nomeUsuario } = usuario
-            provas[i].usuario = {
-                idUsuario,
-                nomeUsuario
             }
+            turma()
+            usuario()
         }
 
         return res.json(provas);
