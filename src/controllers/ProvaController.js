@@ -92,7 +92,7 @@ class ProvaController {
             return res.status(400).json({error: "Prova não encontrada"});
         };
 
-        provas.array.forEach(async prova => {
+        provas.forEach(async prova => {
             prova.turma = await Turma.findOne({
                 where: {
                     id: prova.turma
