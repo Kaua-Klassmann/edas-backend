@@ -93,10 +93,9 @@ class ProvaController {
         };
 
         provas.forEach(async prova => {
-            const idTurma = prova.turma
             prova.turma = await Turma.findOne({
                 where: {
-                    id: idTurma
+                    id: prova.turma
                 }
             })
         });
