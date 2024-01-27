@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import Prova from "../models/Prova.js";
 import * as Yup from 'yup';
+import Turma from "../models/Turma.js";
 
 
 class ProvaController {
@@ -90,6 +91,14 @@ class ProvaController {
         if(!provas) {
             return res.status(400).json({error: "Prova não encontrada"});
         };
+
+        provas.array.forEach(async prova => {
+            prova.turma = await Turma.findOne({
+                where: {
+                    turma: prova.turma
+                }
+            })
+        });
 
         return res.json(provas);
     };
