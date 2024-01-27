@@ -98,6 +98,8 @@ class ProvaController {
                     id: prova.turma
                 }
             })
+
+            return res.json(prova);
         });
 
         return res.json(provas);
