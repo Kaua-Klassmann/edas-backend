@@ -101,7 +101,11 @@ class ProvaController {
                     id: idTurma
                 }
             })
-            provas[i].turma = turma
+            const { nomeTurma } = turma
+            provas[i].turma = json({
+                idTurma,
+                nomeTurma
+            })
 
             // USUARIO
             const idUsuario = provas[i].usuario
@@ -110,7 +114,11 @@ class ProvaController {
                     id: idUsuario
                 }
             })
-            provas[i].usuario = usuario
+            const { nomeUsuario } = usuario
+            provas[i].usuario = json({
+                idUsuario,
+                nomeUsuario
+            })
         }
 
         return res.json(provas);
