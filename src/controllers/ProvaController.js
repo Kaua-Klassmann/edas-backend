@@ -93,12 +93,11 @@ class ProvaController {
         };
 
         provas.forEach(async prova => {
-            const turma = await Turma.findOne({
+            prova.turma = await Turma.findOne({
                 where: {
                     id: prova.turma
                 }
             })
-            return res.json(turma)
         });
 
         return res.json(provas);
