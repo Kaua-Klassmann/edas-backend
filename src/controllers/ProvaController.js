@@ -95,7 +95,7 @@ class ProvaController {
         provas.array.forEach(async prova => {
             prova.turma = await Turma.findOne({
                 where: {
-                    turma: prova.turma
+                    id: prova.turma
                 }
             })
         });
