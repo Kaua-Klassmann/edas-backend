@@ -92,7 +92,7 @@ class ProvaController {
             return res.status(400).json({error: "Prova não encontrada"});
         };
 
-        /*provas.forEach(async prova => {
+        provas.forEach(async prova => {
             const idTurma = prova.turma
             prova.turma = await Turma.findOne({
                 where: {
@@ -100,7 +100,6 @@ class ProvaController {
                 }
             })
         });
-        */
 
         return res.json(provas);
     };
