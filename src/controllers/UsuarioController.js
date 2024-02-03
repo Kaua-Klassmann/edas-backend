@@ -22,7 +22,7 @@ class UsuarioController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        const { email } = req.body;
+        const { email, nome } = req.body;
 
         if(email.split("@")[1] != "aluno.feliz.ifrs.edu.br"){
             return res.status(422).json({error: "Email inválido."});
@@ -45,7 +45,7 @@ class UsuarioController {
             senha: req.body.senha
         }
 
-        const { id, nome } = await Usuario.create(body);
+        const { id } = await Usuario.create(body);
 
         //enviar email
 
