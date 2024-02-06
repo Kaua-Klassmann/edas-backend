@@ -39,7 +39,8 @@ class ProvaController {
             turma: Yup.number().min(1).required(),
             disciplina: Yup.number().min(1).required(),
             dia: Yup.string().required(),
-            horario: Yup.string().required()
+            horario: Yup.string().required(),
+            descrição: Yup.string().required()
         });
 
         if(! (await schema.isValid(req.body))) {
@@ -65,10 +66,11 @@ class ProvaController {
             disciplina: req.body.disciplina,
             dia: req.body.dia,
             horario: req.body.horario,
+            descrição: req.body.descrição,
             usuario: req.uid
         }
 
-        const { id, curso, ano, turma, disciplina, dia, horario, usuario } = await Prova.create(body);
+        const { id, curso, ano, turma, disciplina, dia, horario, descrição, usuario } = await Prova.create(body);
         return res.json({
             id,
             curso,
@@ -77,6 +79,7 @@ class ProvaController {
             disciplina,
             dia, 
             horario,
+            descrição,
             usuario
         });
     };
