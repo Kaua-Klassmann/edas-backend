@@ -16,7 +16,6 @@ export default async (req, res, next) => {
         req.uid = decoded.id;
         req.ucurso = decoded.curso;
         req.uano = decoded.ano;
-        req.uativado = decoded.ativado;
         return next();
 
     } catch (error) {
