@@ -23,6 +23,11 @@ class Prova extends Model {
                 horario: {
                     type: DataTypes.STRING(255),
                     allowNull: false,
+                },
+                
+                descrição: {
+                    type: DataTypes.STRING(),
+                    allowNull: false
                 }
 
             },
