@@ -95,51 +95,48 @@ class ProvaController {
         };
 
         // ENTREGAR COMPLETO
-
-        async function turma(index) {
-            const id = provas[index].turma
-            const turma = await Turma.findOne({
-                where: {
-                    id: id
-                }
-            })
-            const { nome } = turma
-            provas[index].turma = {
-                id,
-                nome
-            }
-        }
-
-        async function usuario(index) {
-            const id = provas[index].usuario
-            const usuario = await Usuario.findOne({
-                where: {
-                    id: id
-                }
-            })
-            const { nome } = usuario
-            provas[index].usuario = {
-                id,
-                nome
-            }
-        }
-
-        async function disciplina(index) {
-            const id = provas[index].disciplina
-            const disciplina = await Disciplina.findOne({
-                where: {
-                    id: id
-                }
-            })
-            const { nome } = disciplina
-            provas[index].disciplina = {
-                id,
-                nome
-            }
-        }
         
-        for(let index = 0; index < provas.length; index++){
-            await turma(index), await usuario(index), await disciplina(index)
+        for(let i = 0; i < provas.length; i++){
+            async function turma() {
+                const id = provas[i].turma
+                const turma = await Turma.findOne({
+                    where: {
+                        id: id
+                    }
+                })
+                const { nome } = turma
+                provas[i].turma = {
+                    id,
+                    nome
+                }
+            }
+            async function usuario() {
+                const id = provas[i].usuario
+                const usuario = await Usuario.findOne({
+                    where: {
+                        id: id
+                    }
+                })
+                const { nome } = usuario
+                provas[i].usuario = {
+                    id,
+                    nome
+                }
+            }
+            async function disciplina() {
+                const id = provas[i].disciplina
+                const disciplina = await Disciplina.findOne({
+                    where: {
+                        id: id
+                    }
+                })
+                const { nome } = disciplina
+                provas[i].disciplina = {
+                    id,
+                    nome
+                }
+            }
+            await turma(), await usuario(), await disciplina()
         }
 
         return res.json(provas);
