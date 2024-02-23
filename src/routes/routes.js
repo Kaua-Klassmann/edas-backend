@@ -8,6 +8,7 @@ import ProvaController from "../controllers/ProvaController.js";
 import SessionController from "../controllers/SessionController.js";
 import AtivacaoController from "../controllers/AtivacaoController.js";
 import authMiddleware from "../middlewares/auth.js";
+import errorRoute from "../middlewares/errorRoute.js";
 
 const routes = new Router();
 
@@ -24,5 +25,7 @@ routes.get('/provasUsuario', ProvaController.provasUsuario);
 routes.delete('/prova', ProvaController.delete);
 routes.post('/prova', ProvaController.store);
 routes.get('/usuario', UsuarioController.show);
+
+routes.use(errorRoute)
 
 export default routes;
