@@ -48,7 +48,7 @@ class SessionController {
                 turma,
                 ano,
             },
-            token: jwt.sign({ id, curso, ano, ativado }, authConfig.secret, {
+            token: jwt.sign({ id, curso, ano }, authConfig.secret, {
                 expiresIn: authConfig.expiresIn,
             }), 
         });
