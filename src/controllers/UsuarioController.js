@@ -22,7 +22,9 @@ class UsuarioController {
             return res.status(400).json({error: "Formato inválido."});
         };
 
-        const { email, nome } = req.body;
+        let { email, nome } = req.body;
+
+        email = email.trim();
 
         if(email.split("@")[1] != "aluno.feliz.ifrs.edu.br"){
             return res.status(422).json({error: "Email inválido."});
