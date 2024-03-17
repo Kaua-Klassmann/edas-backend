@@ -1,5 +1,5 @@
-import { configDotenv } from "dotenv";
-configDotenv();
+//import { configDotenv } from "dotenv";
+//configDotenv();
 
 const databaseConfig = {
     dialect: process.env.DB_DIALECT,
